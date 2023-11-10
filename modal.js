@@ -43,7 +43,7 @@ function checkAcceptConditions(event) {
 
 function validFirstName() {
 const firstName = document.querySelector("#first").value;
-const error=document.querySelector("#errorFirstName");
+const error = document.querySelector("#errorFirstName");
 console.log(firstName)
 if(firstName.length>=2){
   error.style.display="none"
@@ -61,14 +61,14 @@ console.log(formulaire)
 formulaire.addEventListener("click", () =>{
   event.preventDefault()
   validFirstName()
-  console.log("hola")
+  console.log("hola first name")
 })
 
 //Surname Validation
 
 function validSurname() {
   const surname = document.querySelector("#last").value;
-  const error=document.querySelector("#errorSurname");
+  const error = document.querySelector("#errorSurname");
   console.log(surname)
   if(surname.length>=2){
     error.style.display="none"
@@ -83,9 +83,36 @@ return false
 formulaire.addEventListener("click", () =>{
   event.preventDefault()
   validSurname()
-  console.log("hola")
+  console.log("hola surname")
 })
 
 //Email Validation
 
+function validEmail() {
+ 
+ const error = document.querySelector("#errorEmail");
+ const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+ const emailok = document.querySelector("#email").value.match(emailPattern);
+
+ console.log(emailok)
+
+  //if(email.length>=2){
+  //  error.style.display="none"
+   // return true
+
+  if(emailok){
+  error.style.display="none"
+  return true
+}
+
+console.log("error")
+error.style.display="block"
+error.innerHTML="Adresse e-mail invalide"
+return false
+}
+formulaire.addEventListener("click", () =>{
+  event.preventDefault()
+  validEmail()
+  console.log("hola Email")
+})
 
