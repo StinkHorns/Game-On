@@ -58,8 +58,7 @@
               name="reserve"
               id="formulaire"
               >
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
@@ -70,8 +69,7 @@
                 /><br> 
                 <span id="errorFirstName" class="error"></span>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -81,38 +79,44 @@
                                 /><br>
                 <span id="errorSurname" class="error"></span>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
-                  name="email"
-                      
-             
+                  name="email"                 
                   /><br>
                 <span id="errorEmail" class="error"></span>
-                
+
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
-                  name="birthdate"
+                  name="birthdate"                  
                 /><br>
+                <span id="errorDOB" class="error"></span>
+
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <input 
+                  type="number" 
+                  class="text-control" 
+                  id="quantity" 
+                  name="quantity" 
+                  min="0" 
+                  max="99" 
+                  required
+                  />
+                  <span id="errorNrTournois" class="error"></span>
+             
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <div
-                class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -181,6 +185,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span id="errorLocationTournois" class="error"></span>
               </div>
 
               <div
@@ -191,12 +196,15 @@
                   id="checkbox1"
                   checked
                   name="conditions"
-                />
+                />                
+
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span id="errorAcceptConditions" class="error"></span>
+
                 <input class="checkbox-input" type="checkbox" id="checkbox2" name="newsletter"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>

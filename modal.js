@@ -9,10 +9,11 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalBody = document.querySelectorAll(".modal-body");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelector(".close");
-const acceptConditionsChecked = document.querySelector("#checkbox1");
+
 
 if (closeModalBtn == null) throw new Error("No close button found");
 
@@ -35,9 +36,8 @@ function launchModal() {
 
 
 
-function checkAcceptConditions(event) {
-  console.log('event:', event)
-}
+
+
 
 //First Name Validation
 
@@ -52,19 +52,16 @@ if(firstName.length>=2){
 
 console.log("error")
 error.style.display="block"
-error.innerHTML="Le Prenom doit contenir au moins 2 caracteres"
+error.innerHTML="Veuillez entrer 2 caractères ou plus pour le champ du prenom"
 return false
 }
 
 const formulaire=document.querySelector ("#btn-submit")
 console.log(formulaire)
-formulaire.addEventListener("click", () =>{
-  event.preventDefault()
-  validFirstName()
-  console.log("hola first name")
-})
+
 
 //Surname Validation
+
 
 function validSurname() {
   const surname = document.querySelector("#last").value;
@@ -77,14 +74,10 @@ function validSurname() {
 
 console.log("error")
 error.style.display="block"
-error.innerHTML="Le nom doit contenir au moins 2 caracteres"
+error.innerHTML="Veuillez entrer 2 caractères ou plus pour le champ du nom"
 return false
 }
-formulaire.addEventListener("click", () =>{
-  event.preventDefault()
-  validSurname()
-  console.log("hola surname")
-})
+
 
 //Email Validation
 
@@ -96,11 +89,8 @@ function validEmail() {
 
  console.log(emailok)
 
-  //if(email.length>=2){
-  //  error.style.display="none"
-   // return true
 
-  if(emailok){
+if(emailok){
   error.style.display="none"
   return true
 }
@@ -110,9 +100,94 @@ error.style.display="block"
 error.innerHTML="Adresse e-mail invalide"
 return false
 }
+
+
+// Date of Birth Validation
+function inputDOB() {
+ 
+  const error = document.querySelector("#errorDOB");
+  const okDOB = document.querySelector("#birthdate").value.length >= 1;
+ 
+  console.log(document.querySelector("#birthdate").value)
+ 
+ 
+ if(okDOB){
+   error.style.display="none"
+   return true
+ }
+ 
+ console.log("error")
+ error.style.display="block"
+ error.innerHTML="Vous devez entrer votre date de naissance"
+ return false
+ }
+
+
+  //Number Tournois Validation
+
+function validNrTournois() {
+  const quantity = document.querySelector("#quantity").value;
+  const error = document.querySelector("#errorNrTournois");
+  console.log(quantity)
+
+  if(quantity>=0 && quantity<100 && quantity.length>0){
+    error.style.display="none"
+    return true
+    }
+
+
+console.log("error")
+error.style.display="block"
+error.innerHTML="Le nombre de tournois doit être entre 0 et 99"
+return false
+}
+
+
+// Btn Radio Selection Validation
+
+
+
+
+
+
+
+
+// Clicked Conditions Validation
+function checkAcceptConditions(event) {
+  console.log('event:', event)
+
+  const acceptConditionsChecked = document.querySelector("#checkbox1");
+  const error = document.querySelector("#errorAcceptConditions");
+  console.log(errorAcceptConditions)
+  if(acceptConditionsChecked.checked){
+    error.style.display="none"
+    return true
+}
+
+console.log("error")
+error.style.display="block"
+error.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions"
+return false
+}
+
+//
+function changeModal () {
+console.log(modalBody)
+  modalBody[0].innerHTML=""
+
+const confirmation=document.createElement("div")
+confirmation.innerText="Merci pour votre inscription"
+confirmation.classList.add("confirmacion")
+modalBody[0].appendChild(confirmation)
+
+}
+
 formulaire.addEventListener("click", () =>{
   event.preventDefault()
-  validEmail()
-  console.log("hola Email")
+  if (validFirstName() && validSurname() && validEmail() && inputDOB() && validNrTournois() && checkAcceptConditions()) {
+    console.log("hola Conditions")
+    changeModal()
+     }
+  
 })
 
