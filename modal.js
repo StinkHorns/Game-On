@@ -145,16 +145,29 @@ return false
 
 // Btn Radio Selection Validation
 
-function confirmTournoi (event) {
-  console.log(event)
-  const checkedLocation = document.querySelectorAll("#location1","#location2","#location3","#location4","#location5","#location5");
-  const error = document.querySelector("#errorLocationTournois")
+function confirmTournoi () {
+  const checkedLocation = document.getElementsByClassName("checkbox-input");
+  const error = document.querySelector("#errorLocationTournois");
 
-  if(checkedLocation.checked){
-    error.style.display="none"
-    return true
+  var checkedTournoi = false;
+  console.log(checkedLocation)
+   for (var i = 0; i < checkedLocation.length; i++) {
+      if ( checkedLocation[i].checked ) {
+        checkedTournoi = true;
+      }
+    }
+
+
+  if(checkedTournoi){
+    error.style.display="none";
+    return true;
   }
 
+  console.log("error")
+
+  error.style.display="block"
+  error.innerHTML="Vous devez selectioner un tournoi"
+  return false
 }
 
 
@@ -194,7 +207,9 @@ modalBody[0].appendChild(confirmation)
 
 formulaire.addEventListener("click", () =>{
   event.preventDefault()
-  if (validFirstName() && validSurname() && validEmail() && inputDOB() && validNrTournois() && checkAcceptConditions()) {
+  if (validFirstName() && validSurname() && 
+  validEmail() && inputDOB() && validNrTournois() && 
+  confirmTournoi() && checkAcceptConditions() ) {
     console.log("hola Conditions")
     changeModal()
      }
