@@ -145,7 +145,17 @@ return false
 
 // Btn Radio Selection Validation
 
+function confirmTournoi (event) {
+  console.log(event)
+  const checkedLocation = document.querySelectorAll("#location1","#location2","#location3","#location4","#location5","#location5");
+  const error = document.querySelector("#errorLocationTournois")
 
+  if(checkedLocation.checked){
+    error.style.display="none"
+    return true
+  }
+
+}
 
 
 
