@@ -149,9 +149,9 @@ function confirmTournoi () {
   const checkedLocation = document.getElementsByClassName("checkbox-input");
   const error = document.querySelector("#errorLocationTournois");
 
-  var checkedTournoi = false;
+  let checkedTournoi = false;
   console.log(checkedLocation)
-   for (var i = 0; i < checkedLocation.length; i++) {
+   for (let i = 0; i < checkedLocation.length; i++) {
       if ( checkedLocation[i].checked ) {
         checkedTournoi = true;
       }
@@ -197,18 +197,24 @@ return false
 function changeModal () {
 console.log(modalBody)
   modalBody[0].innerHTML=""
-
+// Declaring HTML elements for Merci Modal
 const confirmation=document.createElement("div")
+const btnModalMerci=document.createElement("button")
 confirmation.innerText="Merci pour votre inscription"
 confirmation.classList.add("confirmacion")
+btnModalMerci.innerText="Fermer"
+btnModalMerci.classList.add("modal-btn")
+btnModalMerci.classList.add("modal-btn-fermer")
+btnModalMerci.addEventListener("click", closeModal)
+// Adding confirmation to the Modal
 modalBody[0].appendChild(confirmation)
+modalBody[0].appendChild(btnModalMerci)
 
 }
 
 formulaire.addEventListener("click", () =>{
   event.preventDefault()
-  if (validFirstName() && validSurname() && 
-  validEmail() && inputDOB() && validNrTournois() && 
+  if (validFirstName() && validSurname() &&   validEmail() && inputDOB() && validNrTournois() && 
   confirmTournoi() && checkAcceptConditions() ) {
     console.log("hola Conditions")
     changeModal()

@@ -134,9 +134,26 @@ main {
   cursor: pointer;
 }
 
+
+
 .modal-btn:hover {
   background: #3876ac;
 }
+
+
+.modal-btn-fermer {
+color: #FFF;
+font-family: DM Sans;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin-bottom: -9px;
+width: 182px;
+padding-left: 66px;
+padding-bottom: 11px;
+}
+
 
 .footer {
   margin: 20px;
