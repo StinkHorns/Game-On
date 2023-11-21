@@ -27,6 +27,11 @@ function closeModal() {
   console.log("in close modal");
   if (modalbg == null) throw new Error("No Modal Background found");
   modalbg.style.display = "none";
+  console.log("reoad");
+  //Reload on click Fermer-Merci
+  location.reload();
+  
+  
 } 
 
 // launch modal form
