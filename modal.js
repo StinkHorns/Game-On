@@ -13,6 +13,8 @@ const modalBody = document.querySelectorAll(".modal-body");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelector(".close");
+const forme =document.querySelector("#formulaire")
+let formeValid = false
 
 
 if (closeModalBtn == null) throw new Error("No close button found");
@@ -27,9 +29,15 @@ function closeModal() {
   console.log("in close modal");
   if (modalbg == null) throw new Error("No Modal Background found");
   modalbg.style.display = "none";
-  console.log("reoad");
-  //Reload on click Fermer-Merci
-  location.reload();
+  console.log(formeValid);
+
+  if (formeValid) {
+    modalBody[0].innerHTML =""
+    forme.reset()
+    modalBody[0].appendChild(forme)
+    
+  }
+ 
   
   
 } 
@@ -200,8 +208,11 @@ return false
 
 //
 function changeModal () {
-console.log(modalBody)
   modalBody[0].innerHTML=""
+  if (formeValid){
+ 
+console.log(modalBody)
+ 
 // Declaring HTML elements for Merci Modal
 const confirmation=document.createElement("div")
 const btnModalMerci=document.createElement("button")
@@ -211,9 +222,12 @@ btnModalMerci.innerText="Fermer"
 btnModalMerci.classList.add("modal-btn")
 btnModalMerci.classList.add("modal-btn-fermer")
 btnModalMerci.addEventListener("click", closeModal)
+
+
 // Adding confirmation to the Modal
 modalBody[0].appendChild(confirmation)
 modalBody[0].appendChild(btnModalMerci)
+ }
 
 }
 
@@ -222,8 +236,12 @@ formulaire.addEventListener("click", () =>{
   if (validFirstName() && validSurname() &&   validEmail() && inputDOB() && validNrTournois() && 
   confirmTournoi() && checkAcceptConditions() ) {
     console.log("hola Conditions")
+    formeValid = true
     changeModal()
      }
+  else {
+    formeValid = false
+  }
   
 })
 
